@@ -1,4 +1,3 @@
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,80 +5,81 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
 }
 
-/* Header and Navigation */
 header {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 nav h2 {
-    color: #2563eb;
     font-size: 1.5rem;
 }
 
 nav ul {
-    list-style: none;
     display: flex;
+    list-style: none;
     gap: 2rem;
 }
 
 nav a {
+    color: white;
     text-decoration: none;
-    color: #333;
-    font-weight: 500;
     transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: #2563eb;
+    color: #3498db;
 }
 
-/* Hero Section */
 .hero-section {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     padding: 4rem 2rem;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
 }
 
 .hero-container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: center;
 }
 
 .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
     line-height: 1.2;
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
     opacity: 0.95;
 }
 
-.hero-content p {
+.hero-content > p {
     font-size: 1.1rem;
     margin-bottom: 2rem;
     opacity: 0.9;
@@ -89,26 +89,26 @@ nav a:hover {
     display: flex;
     gap: 1rem;
     margin-bottom: 3rem;
-    flex-wrap: wrap;
 }
 
 .btn-primary, .btn-secondary {
     padding: 1rem 2rem;
+    border-radius: 5px;
     text-decoration: none;
-    border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
     display: inline-block;
 }
 
 .btn-primary {
-    background-color: white;
-    color: #667eea;
+    background-color: #3498db;
+    color: white;
 }
 
 .btn-primary:hover {
+    background-color: #2980b9;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
 }
 
 .btn-secondary {
@@ -120,12 +120,13 @@ nav a:hover {
 .btn-secondary:hover {
     background-color: white;
     color: #667eea;
+    transform: translateY(-2px);
 }
 
 .hero-stats {
     display: flex;
-    gap: 3rem;
-    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 .stat-item {
@@ -135,7 +136,8 @@ nav a:hover {
 
 .stat-number {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: bold;
+    color: #fff;
 }
 
 .stat-label {
@@ -146,72 +148,10 @@ nav a:hover {
 .hero-image img {
     width: 100%;
     height: auto;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* Course Categories Section */
-#courses {
-    padding: 4rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-#courses h2 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #1f2937;
-}
-
-#courses > p {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #6b7280;
-    margin-bottom: 3rem;
-}
-
-.course-categories {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-}
-
-.category-card {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.category-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-}
-
-.category-icon {
-    font-size: 3rem;
-    color: #667eea;
-    margin-bottom: 0.5rem;
-}
-
-.category-card h3 {
-    font-size: 1.5rem;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
-}
-
-.category-card p {
-    color: #6b7280;
-    line-height: 1.6;
-    flex-grow: 1;
-}
-
-/* Sections */
 section {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -219,39 +159,191 @@ section {
 }
 
 section h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #1f2937;
+    text-align: center;
+    color: #2c3e50;
 }
 
-/* Footer */
+section > p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
+}
+
+.course-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.category-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.category-icon {
+    font-size: 3rem;
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.category-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.category-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.instructor-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.instructor-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    flex: 1 1 280px;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.instructor-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.instructor-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.instructor-card:hover .instructor-image {
+    transform: scale(1.05);
+}
+
+.instructor-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.instructor-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.instructor-credentials {
+    font-size: 0.95rem;
+    color: #3498db;
+    font-weight: 500;
+    margin: 0;
+}
+
+.instructor-bio {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0.5rem 0 0 0;
+}
+
 footer {
-    background-color: #1f2937;
+    background-color: #2c3e50;
     color: white;
     text-align: center;
     padding: 2rem;
     margin-top: 4rem;
 }
 
-/* Responsive Design */
-@media (min-width: 640px) {
-    .course-categories {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .hero-container {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        text-align: center;
     }
-    
+
     .hero-content h1 {
-        font-size: 3rem;
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    nav ul {
+        gap: 1rem;
+    }
+
+    .course-categories {
+        grid-template-columns: 1fr;
+    }
+
+    .instructor-highlights {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .instructor-card {
+        max-width: 100%;
     }
 }
 
-@media (min-width: 1024px) {
-    .course-categories {
-        grid-template-columns: repeat(3, 1fr);
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero-content h1 {
+        font-size: 1.75rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    .instructor-image {
+        height: 240px;
     }
 }
