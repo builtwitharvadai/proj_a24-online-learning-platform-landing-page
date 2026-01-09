@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
@@ -14,10 +18,10 @@ body {
 /* Header and Navigation */
 header {
     background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
 nav {
@@ -30,7 +34,7 @@ nav {
 }
 
 nav h2 {
-    color: #6366f1;
+    color: #4f46e5;
     font-size: 1.5rem;
 }
 
@@ -40,15 +44,92 @@ nav ul {
     gap: 2rem;
 }
 
-nav a {
+nav ul li a {
     text-decoration: none;
     color: #333;
     font-weight: 500;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
+    position: relative;
 }
 
-nav a:hover {
-    color: #6366f1;
+nav ul li a:hover {
+    color: #4f46e5;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #4f46e5;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:focus-visible {
+    outline: 2px solid #4f46e5;
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+/* Mobile Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        flex-direction: column;
+        background: #fff;
+        width: 100%;
+        max-width: 300px;
+        padding: 2rem;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        gap: 1.5rem;
+    }
+
+    nav ul.active {
+        right: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
 }
 
 /* Hero Section */
@@ -68,20 +149,20 @@ nav a:hover {
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
     line-height: 1.2;
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-bottom: 1rem;
     opacity: 0.95;
 }
 
-.hero-content > p {
-    font-size: 1.1rem;
+.hero-content p {
     margin-bottom: 2rem;
+    font-size: 1.1rem;
     opacity: 0.9;
 }
 
@@ -93,10 +174,10 @@ nav a:hover {
 
 .btn-primary, .btn-secondary {
     padding: 0.875rem 2rem;
-    border-radius: 8px;
     text-decoration: none;
+    border-radius: 8px;
     font-weight: 600;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     display: inline-block;
 }
 
@@ -107,17 +188,18 @@ nav a:hover {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
-    background: rgba(255,255,255,0.2);
+    background: transparent;
     color: white;
     border: 2px solid white;
 }
 
 .btn-secondary:hover {
-    background: rgba(255,255,255,0.3);
+    background: white;
+    color: #667eea;
 }
 
 .hero-stats {
@@ -132,7 +214,7 @@ nav a:hover {
 
 .stat-number {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 .stat-label {
@@ -143,7 +225,26 @@ nav a:hover {
 .hero-image img {
     width: 100%;
     border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
 
 /* Course Categories Section */
@@ -157,13 +258,13 @@ nav a:hover {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: #1f2937;
 }
 
 #courses > p {
     text-align: center;
-    font-size: 1.2rem;
-    color: #666;
+    font-size: 1.1rem;
+    color: #6b7280;
     margin-bottom: 3rem;
 }
 
@@ -177,13 +278,13 @@ nav a:hover {
     background: white;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .category-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .category-icon {
@@ -194,11 +295,11 @@ nav a:hover {
 .category-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: #1f2937;
 }
 
 .category-card p {
-    color: #666;
+    color: #6b7280;
     line-height: 1.6;
 }
 
@@ -212,13 +313,13 @@ nav a:hover {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: #1f2937;
 }
 
 #instructors > p {
     text-align: center;
-    font-size: 1.2rem;
-    color: #666;
+    font-size: 1.1rem;
+    color: #6b7280;
     margin-bottom: 3rem;
 }
 
@@ -234,8 +335,8 @@ nav a:hover {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .instructor-card:hover {
@@ -255,17 +356,17 @@ nav a:hover {
 .instructor-name {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: #1f2937;
 }
 
 .instructor-credentials {
-    color: #6366f1;
+    color: #4f46e5;
     font-weight: 600;
     margin-bottom: 1rem;
 }
 
 .instructor-bio {
-    color: #666;
+    color: #6b7280;
     line-height: 1.6;
 }
 
@@ -280,13 +381,13 @@ nav a:hover {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: #1f2937;
 }
 
 #testimonials > p {
     text-align: center;
-    font-size: 1.2rem;
-    color: #666;
+    font-size: 1.1rem;
+    color: #6b7280;
     margin-bottom: 3rem;
 }
 
@@ -300,30 +401,20 @@ nav a:hover {
     background: white;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-quote {
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
     font-style: italic;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
 }
 
 .testimonial-rating {
-    margin-bottom: 1rem;
-}
-
-.star {
     color: #fbbf24;
-    font-size: 1.2rem;
-}
-
-.star.empty {
-    color: #d1d5db;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
 }
 
 .testimonial-attribution {
@@ -334,12 +425,12 @@ nav a:hover {
 
 .testimonial-name {
     font-weight: 600;
-    color: #333;
+    color: #1f2937;
 }
 
 .testimonial-course {
-    color: #6366f1;
     font-size: 0.9rem;
+    color: #6b7280;
 }
 
 /* Pricing Section */
@@ -352,143 +443,107 @@ nav a:hover {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: #1f2937;
 }
 
 #pricing > p {
     text-align: center;
-    font-size: 1.2rem;
-    color: #666;
+    font-size: 1.1rem;
+    color: #6b7280;
     margin-bottom: 3rem;
 }
 
 .pricing-container {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    justify-content: center;
-    align-items: stretch;
 }
 
 .pricing-card {
     background: white;
+    padding: 2rem;
     border-radius: 12px;
-    padding: 2.5rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    flex: 1;
-    max-width: 380px;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
 }
 
 .pricing-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
 .pricing-card.recommended {
-    border: 3px solid #6366f1;
-    box-shadow: 0 8px 24px rgba(99,102,241,0.2);
+    border: 3px solid #4f46e5;
     transform: scale(1.05);
 }
 
-.pricing-card.recommended:hover {
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 12px 32px rgba(99,102,241,0.3);
-}
-
 .pricing-badge {
-    background: #6366f1;
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: #4f46e5;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.875rem;
     font-weight: 600;
-    text-align: center;
-    margin-bottom: 1rem;
-    display: inline-block;
-    align-self: center;
 }
 
 .pricing-tier {
     font-size: 1.75rem;
-    font-weight: 700;
-    color: #333;
     margin-bottom: 1rem;
-    text-align: center;
+    color: #1f2937;
 }
 
 .pricing-amount {
-    text-align: center;
     margin-bottom: 2rem;
 }
 
 .pricing-price {
     font-size: 3rem;
-    font-weight: 700;
-    color: #6366f1;
+    font-weight: bold;
+    color: #4f46e5;
 }
 
 .pricing-period {
-    color: #666;
+    color: #6b7280;
     font-size: 1rem;
 }
 
 .pricing-features {
     list-style: none;
     margin-bottom: 2rem;
-    flex-grow: 1;
 }
 
 .pricing-features li {
     padding: 0.75rem 0;
-    color: #666;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #4b5563;
 }
 
-.pricing-features li::before {
-    content: "✓";
+.pricing-features li:before {
+    content: "✓ ";
     color: #10b981;
-    font-weight: 700;
-    font-size: 1.2rem;
-    flex-shrink: 0;
+    font-weight: bold;
+    margin-right: 0.5rem;
 }
 
 .pricing-cta {
-    padding: 0.875rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    text-align: center;
-    transition: all 0.3s;
     display: block;
-}
-
-.pricing-card:not(.recommended) .pricing-cta {
-    background: #6366f1;
-    color: white;
-}
-
-.pricing-card:not(.recommended) .pricing-cta:hover {
+    text-align: center;
+    padding: 1rem;
     background: #4f46e5;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(99,102,241,0.3);
-}
-
-.pricing-card.recommended .pricing-cta {
-    background: #6366f1;
     color: white;
-    box-shadow: 0 4px 12px rgba(99,102,241,0.3);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s ease;
 }
 
-.pricing-card.recommended .pricing-cta:hover {
-    background: #4f46e5;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(99,102,241,0.4);
+.pricing-cta:hover {
+    background: #4338ca;
 }
 
 /* Footer */
@@ -499,43 +554,17 @@ footer {
     padding: 2rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-    
-    .hero-actions {
-        flex-direction: column;
-    }
-    
-    .hero-stats {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    nav ul {
-        gap: 1rem;
-    }
-    
-    .pricing-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .pricing-card.recommended {
-        transform: scale(1);
-    }
-    
-    .pricing-card.recommended:hover {
-        transform: translateY(-5px);
+footer p {
+    margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
