@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Learning Platform - Learn Anytime, Anywhere</title>
-    <meta name="description" content="Transform your career with expert-led online courses in technology, business, and creative skills. Join thousands of learners worldwide.">
+    <title>Online Learning Platform - Master New Skills Today</title>
+    <meta name="description" content="Transform your career with expert-led online courses. Learn at your own pace with our comprehensive learning platform.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header and Navigation -->
+    <a href="#hero" class="skip-link">Skip to main content</a>
+    
     <header>
         <nav>
             <h2>LearnHub</h2>
-            <ul>
-                <li><a href="#home">Home</a></li>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+            <ul id="nav-menu">
+                <li><a href="#hero">Home</a></li>
                 <li><a href="#courses">Courses</a></li>
                 <li><a href="#instructors">Instructors</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
@@ -22,226 +28,199 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="home">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Transform Your Future with Expert-Led Online Courses</h1>
-                <p class="hero-subtitle">Learn at Your Own Pace, Anytime, Anywhere</p>
-                <p>Join thousands of learners worldwide and master in-demand skills with our comprehensive online learning platform. Get access to expert instructors, interactive content, and industry-recognized certificates.</p>
-                <div class="hero-actions">
-                    <a href="#pricing" class="btn-primary">Start Learning Today</a>
-                    <a href="#courses" class="btn-secondary">Browse Courses</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">50,000+</span>
-                        <span class="stat-label">Active Students</span>
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Transform Your Career with Expert-Led Online Courses</h1>
+                    <p class="hero-subtitle">Learn at Your Own Pace, Anytime, Anywhere</p>
+                    <p>Join thousands of students mastering new skills with our comprehensive online learning platform. Get access to industry-leading instructors and cutting-edge curriculum.</p>
+                    <div class="hero-actions">
+                        <a href="#pricing" class="btn-primary">Start Learning Today</a>
+                        <a href="#courses" class="btn-secondary">Browse Courses</a>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Expert Courses</span>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">10,000+</span>
+                            <span class="stat-label">Active Students</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Expert Courses</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Success Rate</span>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">95%</span>
-                        <span class="stat-label">Success Rate</span>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800" alt="Students collaborating on online learning">
+                </div>
+            </div>
+        </section>
+
+        <section id="courses">
+            <h2>Popular Course Categories</h2>
+            <p>Explore our wide range of courses designed to help you achieve your goals</p>
+            <div class="course-categories">
+                <div class="category-card">
+                    <div class="category-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Master modern web technologies including HTML, CSS, JavaScript, React, and more. Build real-world projects and launch your career as a web developer.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">📊</div>
+                    <h3>Data Science</h3>
+                    <p>Learn Python, machine learning, and data analysis. Transform raw data into actionable insights and become a data-driven professional.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎨</div>
+                    <h3>Design</h3>
+                    <p>Discover UI/UX design principles, Adobe Creative Suite, and Figma. Create stunning visual experiences that users love.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">📱</div>
+                    <h3>Mobile Development</h3>
+                    <p>Build native iOS and Android apps with Swift and Kotlin. Learn cross-platform development with React Native and Flutter.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🚀</div>
+                    <h3>Digital Marketing</h3>
+                    <p>Master SEO, social media marketing, and content strategy. Grow your brand and reach your target audience effectively.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">💼</div>
+                    <h3>Business</h3>
+                    <p>Learn entrepreneurship, project management, and leadership skills. Take your career to the next level with proven strategies.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="instructors">
+            <h2>Learn from Industry Experts</h2>
+            <p>Our instructors are professionals with years of real-world experience</p>
+            <div class="instructor-highlights">
+                <div class="instructor-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" alt="Sarah Johnson" class="instructor-image">
+                    <div class="instructor-info">
+                        <h3 class="instructor-name">Sarah Johnson</h3>
+                        <p class="instructor-credentials">Senior Software Engineer at Google</p>
+                        <p class="instructor-bio">15+ years of experience in web development. Passionate about teaching modern JavaScript frameworks and best practices.</p>
+                    </div>
+                </div>
+                <div class="instructor-card">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400" alt="Michael Chen" class="instructor-image">
+                    <div class="instructor-info">
+                        <h3 class="instructor-name">Michael Chen</h3>
+                        <p class="instructor-credentials">Lead Data Scientist at Amazon</p>
+                        <p class="instructor-bio">PhD in Machine Learning. Specializes in making complex data science concepts accessible to beginners.</p>
+                    </div>
+                </div>
+                <div class="instructor-card">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400" alt="Emily Rodriguez" class="instructor-image">
+                    <div class="instructor-info">
+                        <h3 class="instructor-name">Emily Rodriguez</h3>
+                        <p class="instructor-credentials">Creative Director at Adobe</p>
+                        <p class="instructor-bio">Award-winning designer with a focus on user experience. Teaches design thinking and modern design tools.</p>
                     </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop" alt="Students learning online together">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Course Categories Section -->
-    <section id="courses">
-        <h2>Explore Our Course Categories</h2>
-        <p>Discover a wide range of courses designed to help you achieve your goals</p>
-        <div class="course-categories">
-            <div class="category-card">
-                <div class="category-icon">💻</div>
-                <h3>Web Development</h3>
-                <p>Master modern web technologies including HTML, CSS, JavaScript, React, and Node.js. Build responsive websites and full-stack applications.</p>
+        <section id="testimonials">
+            <h2>What Our Students Say</h2>
+            <p>Join thousands of satisfied learners who have transformed their careers</p>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"This platform completely changed my career trajectory. The courses are well-structured, and the instructors are incredibly knowledgeable. I landed my dream job within 3 months of completing the web development bootcamp!"</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <div class="testimonial-attribution">
+                        <span class="testimonial-name">Alex Thompson</span>
+                        <span class="testimonial-course">Web Development Bootcamp</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The data science course exceeded my expectations. The hands-on projects and real-world applications made learning engaging and practical. I now confidently work with machine learning models in my daily job."</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <div class="testimonial-attribution">
+                        <span class="testimonial-name">Priya Patel</span>
+                        <span class="testimonial-course">Data Science Masterclass</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"As a complete beginner, I was nervous about learning design. The instructors made everything so clear and approachable. The community support was amazing, and I now freelance as a UI/UX designer!"</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <div class="testimonial-attribution">
+                        <span class="testimonial-name">James Wilson</span>
+                        <span class="testimonial-course">UI/UX Design Course</span>
+                    </div>
+                </div>
             </div>
-            <div class="category-card">
-                <div class="category-icon">📊</div>
-                <h3>Data Science</h3>
-                <p>Learn Python, machine learning, data visualization, and statistical analysis. Transform data into actionable insights.</p>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">🎨</div>
-                <h3>Design & Creativity</h3>
-                <p>Explore UI/UX design, graphic design, video editing, and digital illustration. Bring your creative vision to life.</p>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">💼</div>
-                <h3>Business & Marketing</h3>
-                <p>Develop skills in digital marketing, entrepreneurship, project management, and business strategy.</p>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">🔒</div>
-                <h3>Cybersecurity</h3>
-                <p>Learn ethical hacking, network security, cryptography, and security best practices to protect digital assets.</p>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">📱</div>
-                <h3>Mobile Development</h3>
-                <p>Build native and cross-platform mobile apps for iOS and Android using Swift, Kotlin, React Native, and Flutter.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Instructors Section -->
-    <section id="instructors">
-        <h2>Learn from Industry Experts</h2>
-        <p>Our instructors are professionals with real-world experience and a passion for teaching</p>
-        <div class="instructor-highlights">
-            <div class="instructor-card">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="Sarah Johnson" class="instructor-image">
-                <div class="instructor-info">
-                    <h3 class="instructor-name">Sarah Johnson</h3>
-                    <p class="instructor-credentials">Senior Software Engineer at Google</p>
-                    <p class="instructor-bio">15+ years of experience in web development. Specializes in React, Node.js, and cloud architecture. Taught over 100,000 students worldwide.</p>
+        <section id="pricing">
+            <h2>Choose Your Learning Path</h2>
+            <p>Flexible pricing options to fit your budget and learning goals</p>
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <h3 class="pricing-tier">Basic</h3>
+                    <div class="pricing-amount">
+                        <span class="pricing-price">$29</span>
+                        <span class="pricing-period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Access to 100+ courses</li>
+                        <li>Basic course materials</li>
+                        <li>Community forum access</li>
+                        <li>Mobile app access</li>
+                        <li>Certificate of completion</li>
+                    </ul>
+                    <a href="#" class="pricing-cta">Get Started</a>
+                </div>
+                <div class="pricing-card recommended">
+                    <span class="pricing-badge">Most Popular</span>
+                    <h3 class="pricing-tier">Pro</h3>
+                    <div class="pricing-amount">
+                        <span class="pricing-price">$79</span>
+                        <span class="pricing-period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Access to all 500+ courses</li>
+                        <li>Premium course materials</li>
+                        <li>Priority support</li>
+                        <li>1-on-1 mentorship sessions</li>
+                        <li>Career guidance</li>
+                        <li>Downloadable resources</li>
+                        <li>Project reviews</li>
+                    </ul>
+                    <a href="#" class="pricing-cta">Start Free Trial</a>
+                </div>
+                <div class="pricing-card">
+                    <h3 class="pricing-tier">Enterprise</h3>
+                    <div class="pricing-amount">
+                        <span class="pricing-price">$199</span>
+                        <span class="pricing-period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Everything in Pro</li>
+                        <li>Team management tools</li>
+                        <li>Custom learning paths</li>
+                        <li>Advanced analytics</li>
+                        <li>Dedicated account manager</li>
+                        <li>API access</li>
+                        <li>White-label options</li>
+                    </ul>
+                    <a href="#" class="pricing-cta">Contact Sales</a>
                 </div>
             </div>
-            <div class="instructor-card">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop" alt="Michael Chen" class="instructor-image">
-                <div class="instructor-info">
-                    <h3 class="instructor-name">Michael Chen</h3>
-                    <p class="instructor-credentials">Lead Data Scientist at Amazon</p>
-                    <p class="instructor-bio">PhD in Machine Learning. Expert in Python, TensorFlow, and statistical modeling. Published researcher with 50+ academic papers.</p>
-                </div>
-            </div>
-            <div class="instructor-card">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop" alt="Emily Rodriguez" class="instructor-image">
-                <div class="instructor-info">
-                    <h3 class="instructor-name">Emily Rodriguez</h3>
-                    <p class="instructor-credentials">Creative Director at Adobe</p>
-                    <p class="instructor-bio">Award-winning designer with 12 years of experience. Specializes in UI/UX design, branding, and digital illustration.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials">
-        <h2>What Our Students Say</h2>
-        <p>Join thousands of satisfied learners who have transformed their careers</p>
-        <div class="testimonials-container">
-            <div class="testimonial-card">
-                <p class="testimonial-quote">"This platform completely changed my career trajectory. The web development course was comprehensive, practical, and taught by industry experts. Within 6 months, I landed my dream job as a frontend developer!"</p>
-                <div class="testimonial-rating">
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                </div>
-                <div class="testimonial-attribution">
-                    <span class="testimonial-name">David Martinez</span>
-                    <span class="testimonial-course">Web Development Bootcamp</span>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-quote">"The data science program exceeded my expectations. The hands-on projects and real-world datasets helped me build a strong portfolio. I'm now working as a data analyst at a Fortune 500 company."</p>
-                <div class="testimonial-rating">
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                </div>
-                <div class="testimonial-attribution">
-                    <span class="testimonial-name">Jessica Lee</span>
-                    <span class="testimonial-course">Data Science Masterclass</span>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-quote">"As a designer, I was looking to expand my skills. The UI/UX course was exactly what I needed. The instructor's feedback was invaluable, and I've already applied what I learned to client projects."</p>
-                <div class="testimonial-rating">
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                </div>
-                <div class="testimonial-attribution">
-                    <span class="testimonial-name">Alex Thompson</span>
-                    <span class="testimonial-course">UI/UX Design Professional</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing">
-        <h2>Choose Your Learning Plan</h2>
-        <p>Select the plan that best fits your learning goals and budget</p>
-        <div class="pricing-container">
-            <div class="pricing-card">
-                <h3 class="pricing-tier">Free</h3>
-                <div class="pricing-amount">
-                    <span class="pricing-price">$0</span>
-                    <span class="pricing-period">/month</span>
-                </div>
-                <ul class="pricing-features">
-                    <li>Access to 10 introductory courses</li>
-                    <li>Basic video lectures</li>
-                    <li>Community forum access</li>
-                    <li>Course completion badges</li>
-                    <li>Mobile app access</li>
-                    <li>7-day course preview</li>
-                </ul>
-                <a href="#signup" class="pricing-cta">Get Started Free</a>
-            </div>
-            <div class="pricing-card recommended">
-                <span class="pricing-badge">Most Popular</span>
-                <h3 class="pricing-tier">Pro</h3>
-                <div class="pricing-amount">
-                    <span class="pricing-price">$29</span>
-                    <span class="pricing-period">/month</span>
-                </div>
-                <ul class="pricing-features">
-                    <li>Unlimited access to 500+ courses</li>
-                    <li>HD video lectures and downloadable resources</li>
-                    <li>Interactive coding exercises</li>
-                    <li>Verified certificates of completion</li>
-                    <li>Priority email support (24-hour response)</li>
-                    <li>Offline viewing on mobile devices</li>
-                    <li>Access to exclusive webinars</li>
-                    <li>Career guidance resources</li>
-                    <li>Project portfolio builder</li>
-                </ul>
-                <a href="#signup" class="pricing-cta">Start Pro Trial</a>
-            </div>
-            <div class="pricing-card">
-                <h3 class="pricing-tier">Enterprise</h3>
-                <div class="pricing-amount">
-                    <span class="pricing-price">$99</span>
-                    <span class="pricing-period">/month</span>
-                </div>
-                <ul class="pricing-features">
-                    <li>Everything in Pro plan</li>
-                    <li>1-on-1 mentorship sessions (2 hours/month)</li>
-                    <li>Personalized learning path</li>
-                    <li>Direct instructor Q&A access</li>
-                    <li>Advanced certification programs</li>
-                    <li>Job placement assistance</li>
-                    <li>Resume and portfolio review</li>
-                    <li>Interview preparation coaching</li>
-                    <li>Lifetime access to course updates</li>
-                    <li>Priority support (2-hour response)</li>
-                    <li>Team collaboration tools (up to 5 users)</li>
-                </ul>
-                <a href="#signup" class="pricing-cta">Contact Sales</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 LearnHub. All rights reserved. Empowering learners worldwide.</p>
+        <p>&copy; 2024 LearnHub. All rights reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
