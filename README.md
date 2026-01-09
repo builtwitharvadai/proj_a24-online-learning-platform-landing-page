@@ -1,2 +1,24 @@
-# proj_a24-online-learning-platform-landing-page
-A clean, professional single-page website for an online learning platform that showcases key value propositions and course offerings. The landing page will feature essential sections including hero messaging, course categories, instructor highlights, student testimonials, and pricing information with a focus on simplicity and user engagement.
+# Online Learning Platform Landing Page
+
+A modern, responsive single-page website for an online learning platform. This landing page showcases courses, instructors, testimonials, and pricing information with a clean, professional design.
+
+## Project Description
+
+This project is a static landing page built with HTML, CSS, and JavaScript. It features:
+- Hero section with call-to-action
+- Course catalog showcase
+- Instructor profiles
+- Student testimonials
+- Pricing plans
+- Responsive design for all devices
+- SEO-optimized with proper meta tags
+
+## Local Development Setup
+
+### Prerequisites
+- Python 3.x (for local development server)
+- Modern web browser (Chrome, Firefox, Safari, or Edge)
+
+### Running Locally
+
+1. Clone the repository:
