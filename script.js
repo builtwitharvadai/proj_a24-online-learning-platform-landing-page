@@ -1,321 +1,310 @@
 /**
- * Interactive Navigation and Smooth Scrolling
- * Implements smooth scrolling behavior and mobile hamburger menu functionality
- * with progressive enhancement and accessibility support
+ * Main JavaScript file with performance optimizations and error handling
+ * Implements lazy loading, smooth scrolling, and feature detection
  */
 
 (function() {
   'use strict';
 
-  // Feature detection for smooth scrolling support
-  const supportsNativeSmoothScroll = 'scrollBehavior' in document.documentElement.style;
+  // Feature Detection
+  const features = {
+    intersectionObserver: 'IntersectionObserver' in window,
+    smoothScroll: 'scrollBehavior' in document.documentElement.style,
+    webP: false
+  };
 
-  /**
-   * Initialize navigation functionality
-   */
-  function initNavigation() {
-    const nav = document.querySelector('nav');
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const hamburger = createHamburgerMenu();
-    const navMenu = document.querySelector('nav ul');
-
-    if (!nav || !navLinks.length || !navMenu) {
-      console.warn('Navigation elements not found');
-      return;
-    }
-
-    // Insert hamburger menu button
-    nav.insertBefore(hamburger, navMenu);
-
-    // Setup smooth scrolling for navigation links
-    setupSmoothScrolling(navLinks, navMenu, hamburger);
-
-    // Setup mobile menu toggle
-    setupMobileMenu(hamburger, navMenu);
-
-    // Setup active state tracking
-    setupActiveStateTracking(navLinks);
-
-    // Setup keyboard navigation
-    setupKeyboardNavigation(hamburger, navMenu);
-  }
-
-  /**
-   * Create hamburger menu button element
-   * @returns {HTMLButtonElement} Hamburger button element
-   */
-  function createHamburgerMenu() {
-    const button = document.createElement('button');
-    button.className = 'hamburger';
-    button.setAttribute('aria-label', 'Toggle navigation menu');
-    button.setAttribute('aria-expanded', 'false');
-    button.setAttribute('aria-controls', 'nav-menu');
-
-    // Create hamburger icon spans
-    for (let i = 0; i < 3; i++) {
-      const span = document.createElement('span');
-      span.setAttribute('aria-hidden', 'true');
-      button.appendChild(span);
-    }
-
-    return button;
-  }
-
-  /**
-   * Setup smooth scrolling behavior for navigation links
-   * @param {NodeList} navLinks - Navigation link elements
-   * @param {HTMLElement} navMenu - Navigation menu element
-   * @param {HTMLElement} hamburger - Hamburger button element
-   */
-  function setupSmoothScrolling(navLinks, navMenu, hamburger) {
-    navLinks.forEach(link => {
-      link.addEventListener('click', (event) => {
-        const href = link.getAttribute('href');
-        
-        // Only handle internal anchor links
-        if (!href || !href.startsWith('#')) {
-          return;
-        }
-
-        event.preventDefault();
-
-        const targetId = href.substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (!targetElement) {
-          console.warn(`Target element not found: ${targetId}`);
-          return;
-        }
-
-        // Close mobile menu if open
-        if (navMenu.classList.contains('active')) {
-          closeMobileMenu(navMenu, hamburger);
-        }
-
-        // Perform smooth scroll
-        smoothScrollTo(targetElement);
-
-        // Update URL without triggering scroll
-        if (history.pushState) {
-          history.pushState(null, null, href);
-        } else {
-          window.location.hash = href;
-        }
-
-        // Set focus to target for accessibility
-        targetElement.setAttribute('tabindex', '-1');
-        targetElement.focus();
-      });
-    });
-  }
-
-  /**
-   * Smooth scroll to target element with fallback
-   * @param {HTMLElement} element - Target element to scroll to
-   */
-  function smoothScrollTo(element) {
-    if (supportsNativeSmoothScroll) {
-      // Use native smooth scrolling
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    } else {
-      // Fallback for browsers without native support
-      smoothScrollPolyfill(element);
+  // Check WebP support
+  function checkWebPSupport() {
+    const elem = document.createElement('canvas');
+    if (elem.getContext && elem.getContext('2d')) {
+      features.webP = elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
     }
   }
+  checkWebPSupport();
 
   /**
-   * Polyfill for smooth scrolling in older browsers
-   * @param {HTMLElement} element - Target element to scroll to
+   * Debounce function for performance optimization
+   * @param {Function} func - Function to debounce
+   * @param {number} wait - Wait time in milliseconds
+   * @returns {Function} Debounced function
    */
-  function smoothScrollPolyfill(element) {
-    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    const duration = 800;
-    let startTime = null;
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
 
-    function animation(currentTime) {
-      if (startTime === null) {
-        startTime = currentTime;
+  /**
+   * Throttle function for performance optimization
+   * @param {Function} func - Function to throttle
+   * @param {number} limit - Time limit in milliseconds
+   * @returns {Function} Throttled function
+   */
+  function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
+
+  /**
+   * Smooth scroll implementation with error handling and fallback
+   * @param {string} target - Target element selector
+   * @param {number} offset - Offset from top in pixels
+   */
+  function smoothScroll(target, offset = 0) {
+    try {
+      const element = document.querySelector(target);
+      if (!element) {
+        console.warn(`Smooth scroll target not found: ${target}`);
+        return;
       }
 
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      
-      // Easing function (ease-in-out)
-      const ease = progress < 0.5
-        ? 4 * progress * progress * progress
-        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
 
-      window.scrollTo(0, startPosition + distance * ease);
+      if (features.smoothScroll) {
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      } else {
+        // Fallback for browsers without smooth scroll support
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        const duration = 800;
+        let start = null;
 
-      if (timeElapsed < duration) {
+        function animation(currentTime) {
+          if (start === null) start = currentTime;
+          const timeElapsed = currentTime - start;
+          const run = ease(timeElapsed, startPosition, distance, duration);
+          window.scrollTo(0, run);
+          if (timeElapsed < duration) requestAnimationFrame(animation);
+        }
+
+        function ease(t, b, c, d) {
+          t /= d / 2;
+          if (t < 1) return c / 2 * t * t + b;
+          t--;
+          return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+
         requestAnimationFrame(animation);
       }
+    } catch (error) {
+      console.error('Error in smooth scroll:', error);
     }
-
-    requestAnimationFrame(animation);
   }
 
   /**
-   * Setup mobile menu toggle functionality
-   * @param {HTMLElement} hamburger - Hamburger button element
-   * @param {HTMLElement} navMenu - Navigation menu element
+   * Lazy loading implementation using Intersection Observer
    */
-  function setupMobileMenu(hamburger, navMenu) {
-    navMenu.setAttribute('id', 'nav-menu');
-
-    hamburger.addEventListener('click', () => {
-      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-      
-      if (isExpanded) {
-        closeMobileMenu(navMenu, hamburger);
-      } else {
-        openMobileMenu(navMenu, hamburger);
-      }
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (event) => {
-      const isClickInside = hamburger.contains(event.target) || navMenu.contains(event.target);
-      
-      if (!isClickInside && navMenu.classList.contains('active')) {
-        closeMobileMenu(navMenu, hamburger);
-      }
-    });
-
-    // Close menu on escape key
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && navMenu.classList.contains('active')) {
-        closeMobileMenu(navMenu, hamburger);
-        hamburger.focus();
-      }
-    });
-  }
-
-  /**
-   * Open mobile navigation menu
-   * @param {HTMLElement} navMenu - Navigation menu element
-   * @param {HTMLElement} hamburger - Hamburger button element
-   */
-  function openMobileMenu(navMenu, hamburger) {
-    navMenu.classList.add('active');
-    hamburger.classList.add('active');
-    hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-
-  /**
-   * Close mobile navigation menu
-   * @param {HTMLElement} navMenu - Navigation menu element
-   * @param {HTMLElement} hamburger - Hamburger button element
-   */
-  function closeMobileMenu(navMenu, hamburger) {
-    navMenu.classList.remove('active');
-    hamburger.classList.remove('active');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  /**
-   * Setup active state tracking for navigation items
-   * @param {NodeList} navLinks - Navigation link elements
-   */
-  function setupActiveStateTracking(navLinks) {
-    const sections = Array.from(navLinks)
-      .map(link => {
-        const href = link.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          const id = href.substring(1);
-          return document.getElementById(id);
-        }
-        return null;
-      })
-      .filter(Boolean);
-
-    if (sections.length === 0) {
-      return;
-    }
-
-    // Throttle scroll event for performance
-    let ticking = false;
-
-    function updateActiveState() {
-      const scrollPosition = window.pageYOffset + 100;
-
-      let currentSection = null;
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          currentSection = section;
-        }
-      });
-
-      navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && currentSection && href === `#${currentSection.id}`) {
-          link.classList.add('active');
-          link.setAttribute('aria-current', 'page');
-        } else {
-          link.classList.remove('active');
-          link.removeAttribute('aria-current');
-        }
-      });
-
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateActiveState);
-        ticking = true;
-      }
-    });
-
-    // Initial update
-    updateActiveState();
-  }
-
-  /**
-   * Setup keyboard navigation for accessibility
-   * @param {HTMLElement} hamburger - Hamburger button element
-   * @param {HTMLElement} navMenu - Navigation menu element
-   */
-  function setupKeyboardNavigation(hamburger, navMenu) {
-    const navLinks = navMenu.querySelectorAll('a');
+  function initLazyLoading() {
+    const lazyImages = document.querySelectorAll('img[data-src], img[loading="lazy"]');
     
-    navMenu.addEventListener('keydown', (event) => {
-      if (event.key === 'Tab') {
-        const firstLink = navLinks[0];
-        const lastLink = navLinks[navLinks.length - 1];
-        
-        // Trap focus within menu when open on mobile
-        if (window.innerWidth < 768 && navMenu.classList.contains('active')) {
-          if (event.shiftKey && document.activeElement === firstLink) {
-            event.preventDefault();
-            hamburger.focus();
-          } else if (!event.shiftKey && document.activeElement === lastLink) {
-            event.preventDefault();
-            hamburger.focus();
+    if (!lazyImages.length) return;
+
+    if (features.intersectionObserver) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            
+            try {
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+              }
+              
+              if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+                img.removeAttribute('data-srcset');
+              }
+
+              img.classList.add('loaded');
+              observer.unobserve(img);
+            } catch (error) {
+              console.error('Error loading lazy image:', error);
+            }
           }
+        });
+      }, {
+        rootMargin: '50px 0px',
+        threshold: 0.01
+      });
+
+      lazyImages.forEach(img => imageObserver.observe(img));
+    } else {
+      // Fallback for browsers without Intersection Observer
+      lazyImages.forEach(img => {
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
         }
-      }
+      });
+    }
+  }
+
+  /**
+   * Initialize smooth scroll for anchor links
+   */
+  function initSmoothScrollLinks() {
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    
+    anchorLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        
+        if (href === '#' || href === '#!') return;
+        
+        e.preventDefault();
+        smoothScroll(href, 80);
+        
+        // Update URL without jumping
+        if (history.pushState) {
+          history.pushState(null, null, href);
+        }
+      });
     });
   }
 
   /**
-   * Initialize on DOM ready
+   * Optimize animations using requestAnimationFrame
    */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initNavigation);
-  } else {
-    initNavigation();
+  function initOptimizedAnimations() {
+    const animatedElements = document.querySelectorAll('[data-animate]');
+    
+    if (!animatedElements.length || !features.intersectionObserver) return;
+
+    const animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          requestAnimationFrame(() => {
+            entry.target.classList.add('animate-in');
+          });
+          animationObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    animatedElements.forEach(el => animationObserver.observe(el));
   }
+
+  /**
+   * Preload critical resources
+   */
+  function preloadCriticalResources() {
+    const criticalImages = document.querySelectorAll('img[data-preload]');
+    
+    criticalImages.forEach(img => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = img.dataset.preload || img.src;
+      document.head.appendChild(link);
+    });
+  }
+
+  /**
+   * Handle scroll events with throttling
+   */
+  function initScrollHandler() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    const handleScroll = throttle(() => {
+      try {
+        const scrolled = window.pageYOffset > 100;
+        header.classList.toggle('scrolled', scrolled);
+      } catch (error) {
+        console.error('Error in scroll handler:', error);
+      }
+    }, 100);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+  }
+
+  /**
+   * Initialize form validation with error handling
+   */
+  function initFormValidation() {
+    const forms = document.querySelectorAll('form[data-validate]');
+    
+    forms.forEach(form => {
+      form.addEventListener('submit', function(e) {
+        try {
+          const inputs = form.querySelectorAll('input[required], textarea[required]');
+          let isValid = true;
+
+          inputs.forEach(input => {
+            if (!input.value.trim()) {
+              isValid = false;
+              input.classList.add('error');
+              input.setAttribute('aria-invalid', 'true');
+            } else {
+              input.classList.remove('error');
+              input.setAttribute('aria-invalid', 'false');
+            }
+          });
+
+          if (!isValid) {
+            e.preventDefault();
+            const firstError = form.querySelector('.error');
+            if (firstError) firstError.focus();
+          }
+        } catch (error) {
+          console.error('Error in form validation:', error);
+        }
+      });
+    });
+  }
+
+  /**
+   * Initialize all functionality when DOM is ready
+   */
+  function init() {
+    try {
+      preloadCriticalResources();
+      initLazyLoading();
+      initSmoothScrollLinks();
+      initOptimizedAnimations();
+      initScrollHandler();
+      initFormValidation();
+
+      // Dispatch custom event when initialization is complete
+      document.dispatchEvent(new CustomEvent('appInitialized', {
+        detail: { features }
+      }));
+    } catch (error) {
+      console.error('Error during initialization:', error);
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Expose public API
+  window.App = {
+    smoothScroll,
+    features,
+    debounce,
+    throttle
+  };
 
 })();
