@@ -3,224 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Learning Platform - Master New Skills Today</title>
-    <meta name="description" content="Transform your career with expert-led online courses. Learn at your own pace with our comprehensive learning platform.">
-    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Primary Meta Tags -->
+    <title>Professional Portfolio | Web Developer & Designer</title>
+    <meta name="title" content="Professional Portfolio | Web Developer & Designer">
+    <meta name="description" content="Explore my professional portfolio showcasing innovative web development projects, creative designs, and technical expertise. Specializing in modern web technologies and user-centric solutions.">
+    <meta name="keywords" content="web developer, portfolio, web design, frontend developer, full stack developer, UI/UX, JavaScript, HTML, CSS, React, responsive design">
+    <meta name="author" content="Professional Portfolio">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourportfolio.com/">
+    <meta property="og:title" content="Professional Portfolio | Web Developer & Designer">
+    <meta property="og:description" content="Explore my professional portfolio showcasing innovative web development projects, creative designs, and technical expertise.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=630&fit=crop&auto=format&q=80">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Professional Portfolio">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://yourportfolio.com/">
+    <meta name="twitter:title" content="Professional Portfolio | Web Developer & Designer">
+    <meta name="twitter:description" content="Explore my professional portfolio showcasing innovative web development projects, creative designs, and technical expertise.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=630&fit=crop&auto=format&q=80">
+    <meta name="twitter:creator" content="@yourhandle">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourportfolio.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Your Name",
+      "url": "https://yourportfolio.com",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop&auto=format&q=80",
+      "jobTitle": "Web Developer & Designer",
+      "description": "Professional web developer specializing in modern web technologies and user-centric solutions",
+      "knowsAbout": ["Web Development", "UI/UX Design", "JavaScript", "React", "Frontend Development"],
+      "sameAs": [
+        "https://linkedin.com/in/yourprofile",
+        "https://github.com/yourprofile",
+        "https://twitter.com/yourhandle"
+      ]
+    }
+    </script>
+    
+    <style>
+        /* CSS Reset and Base Styles - Minified for Performance */
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;line-height:1.6;color:#333;background:#f4f4f4}img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit}
+        
+        /* Header Styles */
+        header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:2rem 0;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+        header h1{font-size:2.5rem;margin-bottom:.5rem;font-weight:700}
+        header p{font-size:1.2rem;opacity:.9}
+        
+        /* Navigation */
+        nav{background:#fff;padding:1rem 0;box-shadow:0 2px 5px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}
+        nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:2rem}
+        nav a{color:#333;font-weight:500;padding:.5rem 1rem;border-radius:5px;transition:all .3s ease}
+        nav a:hover,nav a:focus{background:#667eea;color:#fff;outline:2px solid #667eea;outline-offset:2px}
+        
+        /* Main Content */
+        main{max-width:1200px;margin:2rem auto;padding:0 1rem}
+        section{background:#fff;margin-bottom:2rem;padding:2rem;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+        section h2{color:#667eea;margin-bottom:1.5rem;font-size:2rem;border-bottom:3px solid #667eea;padding-bottom:.5rem}
+        
+        /* About Section */
+        .about-content{display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:center}
+        .profile-img{border-radius:50%;width:200px;height:200px;object-fit:cover;box-shadow:0 4px 15px rgba(0,0,0,.2)}
+        
+        /* Projects Grid */
+        .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+        .project-card{border:1px solid #ddd;border-radius:8px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
+        .project-card:hover,.project-card:focus-within{transform:translateY(-5px);box-shadow:0 5px 20px rgba(0,0,0,.15)}
+        .project-img{width:100%;height:200px;object-fit:cover}
+        .project-info{padding:1.5rem}
+        .project-info h3{color:#333;margin-bottom:.5rem;font-size:1.3rem}
+        .project-info p{color:#666;margin-bottom:1rem}
+        .project-link{display:inline-block;background:#667eea;color:#fff;padding:.5rem 1.5rem;border-radius:5px;transition:background .3s ease}
+        .project-link:hover,.project-link:focus{background:#764ba2;outline:2px solid #764ba2;outline-offset:2px}
+        
+        /* Skills */
+        .skills-list{display:flex;flex-wrap:wrap;gap:1rem}
+        .skill-tag{background:#667eea;color:#fff;padding:.5rem 1rem;border-radius:20px;font-size:.9rem}
+        
+        /* Contact Form */
+        .contact-form{max-width:600px}
+        .form-group{margin-bottom:1.5rem}
+        .form-group label{display:block;margin-bottom:.5rem;font-weight:500;color:#333}
+        .form-group input,.form-group textarea{width:100%;padding:.75rem;border:1px solid #ddd;border-radius:5px;font-family:inherit;font-size:1rem}
+        .form-group input:focus,.form-group textarea:focus{outline:2px solid #667eea;border-color:#667eea}
+        .form-group textarea{resize:vertical;min-height:150px}
+        .submit-btn{background:#667eea;color:#fff;padding:.75rem 2rem;border:none;border-radius:5px;font-size:1rem;cursor:pointer;transition:background .3s ease}
+        .submit-btn:hover,.submit-btn:focus{background:#764ba2;outline:2px solid #764ba2;outline-offset:2px}
+        
+        /* Footer */
+        footer{background:#333;color:#fff;text-align:center;padding:2rem 0;margin-top:3rem}
+        footer p{margin-bottom:.5rem}
+        .social-links{display:flex;justify-content:center;gap:1rem;margin-top:1rem}
+        .social-links a{color:#fff;font-size:1.5rem;transition:color .3s ease}
+        .social-links a:hover,.social-links a:focus{color:#667eea;outline:2px solid #667eea;outline-offset:2px}
+        
+        /* Responsive Design */
+        @media(max-width:768px){header h1{font-size:2rem}nav ul{flex-direction:column;gap:1rem}.about-content{grid-template-columns:1fr}.profile-img{margin:0 auto}.projects-grid{grid-template-columns:1fr}}
+        
+        /* Accessibility - Skip to Main Content */
+        .skip-link{position:absolute;top:-40px;left:0;background:#667eea;color:#fff;padding:.5rem 1rem;z-index:200;transition:top .3s}
+        .skip-link:focus{top:0;outline:2px solid #fff;outline-offset:2px}
+        
+        /* Loading Optimization */
+        img[loading="lazy"]{opacity:0;transition:opacity .3s}
+        img[loading="lazy"].loaded{opacity:1}
+    </style>
 </head>
 <body>
-    <a href="#hero" class="skip-link">Skip to main content</a>
+    <!-- Skip to Main Content Link for Accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
     
-    <header>
-        <nav>
-            <h2>LearnHub</h2>
-            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </button>
-            <ul id="nav-menu">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#instructors">Instructors</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-            </ul>
-        </nav>
+    <!-- Header Section -->
+    <header role="banner">
+        <h1>Professional Portfolio</h1>
+        <p>Web Developer & Designer</p>
     </header>
-
-    <main>
-        <section id="hero" class="hero-section">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1>Transform Your Career with Expert-Led Online Courses</h1>
-                    <p class="hero-subtitle">Learn at Your Own Pace, Anytime, Anywhere</p>
-                    <p>Join thousands of students mastering new skills with our comprehensive online learning platform. Get access to industry-leading instructors and cutting-edge curriculum.</p>
-                    <div class="hero-actions">
-                        <a href="#pricing" class="btn-primary">Start Learning Today</a>
-                        <a href="#courses" class="btn-secondary">Browse Courses</a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">10,000+</span>
-                            <span class="stat-label">Active Students</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">Expert Courses</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">95%</span>
-                            <span class="stat-label">Success Rate</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800" alt="Students collaborating on online learning">
+    
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Main navigation">
+        <ul>
+            <li><a href="#about" aria-label="Navigate to About section">About</a></li>
+            <li><a href="#projects" aria-label="Navigate to Projects section">Projects</a></li>
+            <li><a href="#skills" aria-label="Navigate to Skills section">Skills</a></li>
+            <li><a href="#contact" aria-label="Navigate to Contact section">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- About Section -->
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About Me</h2>
+            <div class="about-content">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&auto=format&q=80" 
+                     alt="Professional headshot portrait" 
+                     class="profile-img" 
+                     loading="lazy"
+                     width="200"
+                     height="200">
+                <div>
+                    <p>Hello! I'm a passionate web developer with expertise in creating modern, responsive, and user-friendly websites. With years of experience in the industry, I specialize in turning ideas into reality through clean code and innovative design.</p>
+                    <p>My approach combines technical excellence with creative problem-solving to deliver solutions that not only meet but exceed client expectations.</p>
                 </div>
             </div>
         </section>
-
-        <section id="courses">
-            <h2>Popular Course Categories</h2>
-            <p>Explore our wide range of courses designed to help you achieve your goals</p>
-            <div class="course-categories">
-                <div class="category-card">
-                    <div class="category-icon">💻</div>
-                    <h3>Web Development</h3>
-                    <p>Master modern web technologies including HTML, CSS, JavaScript, React, and more. Build real-world projects and launch your career as a web developer.</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">📊</div>
-                    <h3>Data Science</h3>
-                    <p>Learn Python, machine learning, and data analysis. Transform raw data into actionable insights and become a data-driven professional.</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">🎨</div>
-                    <h3>Design</h3>
-                    <p>Discover UI/UX design principles, Adobe Creative Suite, and Figma. Create stunning visual experiences that users love.</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">📱</div>
-                    <h3>Mobile Development</h3>
-                    <p>Build native iOS and Android apps with Swift and Kotlin. Learn cross-platform development with React Native and Flutter.</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">🚀</div>
-                    <h3>Digital Marketing</h3>
-                    <p>Master SEO, social media marketing, and content strategy. Grow your brand and reach your target audience effectively.</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">💼</div>
-                    <h3>Business</h3>
-                    <p>Learn entrepreneurship, project management, and leadership skills. Take your career to the next level with proven strategies.</p>
-                </div>
+        
+        <!-- Projects Section -->
+        <section id="projects" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Featured Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop&auto=format&q=80" 
+                         alt="Modern laptop displaying code editor with colorful syntax highlighting" 
+                         class="project-img" 
+                         loading="lazy"
+                         width="600"
+                         height="400">
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>A full-featured online shopping platform with secure payment integration, inventory management, and responsive design.</p>
+                        <a href="#" class="project-link" aria-label="View E-Commerce Platform project details">View Project</a>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&auto=format&q=80" 
+                         alt="Business analytics dashboard showing charts and graphs on computer screen" 
+                         class="project-img" 
+                         loading="lazy"
+                         width="600"
+                         height="400">
+                    <div class="project-info">
+                        <h3>Analytics Dashboard</h3>
+                        <p>Interactive data visualization dashboard with real-time updates, custom reports, and intuitive user interface.</p>
+                        <a href="#" class="project-link" aria-label="View Analytics Dashboard project details">View Project</a>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop&auto=format&q=80" 
+                         alt="Mobile phone displaying modern app interface with clean design" 
+                         class="project-img" 
+                         loading="lazy"
+                         width="600"
+                         height="400">
+                    <div class="project-info">
+                        <h3>Mobile App Design</h3>
+                        <p>Sleek and modern mobile application design with focus on user experience and seamless navigation.</p>
+                        <a href="#" class="project-link" aria-label="View Mobile App Design project details">View Project</a>
+                    </div>
+                </article>
             </div>
         </section>
-
-        <section id="instructors">
-            <h2>Learn from Industry Experts</h2>
-            <p>Our instructors are professionals with years of real-world experience</p>
-            <div class="instructor-highlights">
-                <div class="instructor-card">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" alt="Sarah Johnson" class="instructor-image">
-                    <div class="instructor-info">
-                        <h3 class="instructor-name">Sarah Johnson</h3>
-                        <p class="instructor-credentials">Senior Software Engineer at Google</p>
-                        <p class="instructor-bio">15+ years of experience in web development. Passionate about teaching modern JavaScript frameworks and best practices.</p>
-                    </div>
-                </div>
-                <div class="instructor-card">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400" alt="Michael Chen" class="instructor-image">
-                    <div class="instructor-info">
-                        <h3 class="instructor-name">Michael Chen</h3>
-                        <p class="instructor-credentials">Lead Data Scientist at Amazon</p>
-                        <p class="instructor-bio">PhD in Machine Learning. Specializes in making complex data science concepts accessible to beginners.</p>
-                    </div>
-                </div>
-                <div class="instructor-card">
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400" alt="Emily Rodriguez" class="instructor-image">
-                    <div class="instructor-info">
-                        <h3 class="instructor-name">Emily Rodriguez</h3>
-                        <p class="instructor-credentials">Creative Director at Adobe</p>
-                        <p class="instructor-bio">Award-winning designer with a focus on user experience. Teaches design thinking and modern design tools.</p>
-                    </div>
-                </div>
+        
+        <!-- Skills Section -->
+        <section id="skills" aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Technical Skills</h2>
+            <div class="skills-list" role="list" aria-label="List of technical skills">
+                <span class="skill-tag" role="listitem">HTML5</span>
+                <span class="skill-tag" role="listitem">CSS3</span>
+                <span class="skill-tag" role="listitem">JavaScript</span>
+                <span class="skill-tag" role="listitem">React</span>
+                <span class="skill-tag" role="listitem">Node.js</span>
+                <span class="skill-tag" role="listitem">Python</span>
+                <span class="skill-tag" role="listitem">SQL</span>
+                <span class="skill-tag" role="listitem">Git</span>
+                <span class="skill-tag" role="listitem">Responsive Design</span>
+                <span class="skill-tag" role="listitem">UI/UX Design</span>
             </div>
         </section>
-
-        <section id="testimonials">
-            <h2>What Our Students Say</h2>
-            <p>Join thousands of satisfied learners who have transformed their careers</p>
-            <div class="testimonials-container">
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"This platform completely changed my career trajectory. The courses are well-structured, and the instructors are incredibly knowledgeable. I landed my dream job within 3 months of completing the web development bootcamp!"</p>
-                    <div class="testimonial-rating">★★★★★</div>
-                    <div class="testimonial-attribution">
-                        <span class="testimonial-name">Alex Thompson</span>
-                        <span class="testimonial-course">Web Development Bootcamp</span>
-                    </div>
+        
+        <!-- Contact Section -->
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Get In Touch</h2>
+            <form class="contact-form" aria-label="Contact form">
+                <div class="form-group">
+                    <label for="name">Name <span aria-label="required">*</span></label>
+                    <input type="text" id="name" name="name" required aria-required="true" placeholder="Your name">
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"The data science course exceeded my expectations. The hands-on projects and real-world applications made learning engaging and practical. I now confidently work with machine learning models in my daily job."</p>
-                    <div class="testimonial-rating">★★★★★</div>
-                    <div class="testimonial-attribution">
-                        <span class="testimonial-name">Priya Patel</span>
-                        <span class="testimonial-course">Data Science Masterclass</span>
-                    </div>
+                <div class="form-group">
+                    <label for="email">Email <span aria-label="required">*</span></label>
+                    <input type="email" id="email" name="email" required aria-required="true" placeholder="your.email@example.com">
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"As a complete beginner, I was nervous about learning design. The instructors made everything so clear and approachable. The community support was amazing, and I now freelance as a UI/UX designer!"</p>
-                    <div class="testimonial-rating">★★★★★</div>
-                    <div class="testimonial-attribution">
-                        <span class="testimonial-name">James Wilson</span>
-                        <span class="testimonial-course">UI/UX Design Course</span>
-                    </div>
+                <div class="form-group">
+                    <label for="message">Message <span aria-label="required">*</span></label>
+                    <textarea id="message" name="message" required aria-required="true" placeholder="Your message here..."></textarea>
                 </div>
-            </div>
-        </section>
-
-        <section id="pricing">
-            <h2>Choose Your Learning Path</h2>
-            <p>Flexible pricing options to fit your budget and learning goals</p>
-            <div class="pricing-container">
-                <div class="pricing-card">
-                    <h3 class="pricing-tier">Basic</h3>
-                    <div class="pricing-amount">
-                        <span class="pricing-price">$29</span>
-                        <span class="pricing-period">/month</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Access to 100+ courses</li>
-                        <li>Basic course materials</li>
-                        <li>Community forum access</li>
-                        <li>Mobile app access</li>
-                        <li>Certificate of completion</li>
-                    </ul>
-                    <a href="#" class="pricing-cta">Get Started</a>
-                </div>
-                <div class="pricing-card recommended">
-                    <span class="pricing-badge">Most Popular</span>
-                    <h3 class="pricing-tier">Pro</h3>
-                    <div class="pricing-amount">
-                        <span class="pricing-price">$79</span>
-                        <span class="pricing-period">/month</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Access to all 500+ courses</li>
-                        <li>Premium course materials</li>
-                        <li>Priority support</li>
-                        <li>1-on-1 mentorship sessions</li>
-                        <li>Career guidance</li>
-                        <li>Downloadable resources</li>
-                        <li>Project reviews</li>
-                    </ul>
-                    <a href="#" class="pricing-cta">Start Free Trial</a>
-                </div>
-                <div class="pricing-card">
-                    <h3 class="pricing-tier">Enterprise</h3>
-                    <div class="pricing-amount">
-                        <span class="pricing-price">$199</span>
-                        <span class="pricing-period">/month</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Everything in Pro</li>
-                        <li>Team management tools</li>
-                        <li>Custom learning paths</li>
-                        <li>Advanced analytics</li>
-                        <li>Dedicated account manager</li>
-                        <li>API access</li>
-                        <li>White-label options</li>
-                    </ul>
-                    <a href="#" class="pricing-cta">Contact Sales</a>
-                </div>
-            </div>
+                <button type="submit" class="submit-btn" aria-label="Submit contact form">Send Message</button>
+            </form>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2024 LearnHub. All rights reserved.</p>
+    
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p>&copy; 2024 Professional Portfolio. All rights reserved.</p>
+        <div class="social-links" role="navigation" aria-label="Social media links">
+            <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile (opens in new tab)">GitHub</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile (opens in new tab)">LinkedIn</a>
+            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Visit Twitter profile (opens in new tab)">Twitter</a>
+        </div>
     </footer>
-
-    <script src="script.js"></script>
+    
+    <!-- Performance Optimization Script -->
+    <script>
+        // Lazy loading images fallback for older browsers
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.addEventListener('load', () => img.classList.add('loaded'));
+            });
+        } else {
+            // Fallback for browsers that don't support lazy loading
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+            document.body.appendChild(script);
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Set focus for accessibility
+                    target.setAttribute('tabindex', '-1');
+                    target.focus();
+                }
+            });
+        });
+        
+        // Form submission handler with validation
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
