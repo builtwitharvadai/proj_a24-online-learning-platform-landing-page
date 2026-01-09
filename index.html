@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Learning Platform - Learn Anytime, Anywhere</title>
-    <meta name="description" content="Transform your career with our comprehensive online learning platform. Access expert-led courses, interactive content, and personalized learning paths.">
+    <meta name="description" content="Access thousands of courses in programming, design, business, and more. Learn at your own pace with expert instructors.">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
     <header>
         <nav>
             <h2>LearnHub</h2>
             <ul>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#courses">Courses</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -19,56 +21,98 @@
         </nav>
     </header>
 
-    <main>
-        <section class="hero-section">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1>Transform Your Future with Expert-Led Online Learning</h1>
-                    <p class="hero-subtitle">Master in-demand skills at your own pace with our comprehensive learning platform</p>
-                    <p>Join thousands of learners worldwide who are advancing their careers through our interactive courses, personalized learning paths, and expert instruction. Whether you're looking to switch careers, gain new skills, or advance in your current role, we provide the tools and support you need to succeed.</p>
-                    <div class="hero-actions">
-                        <a href="#signup" class="btn-primary btn-large">Start Learning Today</a>
-                        <a href="#courses" class="btn-secondary btn-large">Explore Courses</a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">10,000+</span>
-                            <span class="stat-label">Active Learners</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">Expert Courses</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">95%</span>
-                            <span class="stat-label">Success Rate</span>
-                        </div>
-                    </div>
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Learn Without Limits</h1>
+                <p class="hero-subtitle">Transform Your Career with Expert-Led Courses</p>
+                <p>Access thousands of courses in technology, business, design, and more. Learn at your own pace with lifetime access and expert support.</p>
+                <div class="hero-actions">
+                    <a href="#courses" class="btn-primary">Browse Courses</a>
+                    <a href="#about" class="btn-secondary">Learn More</a>
                 </div>
-                <div class="hero-image">
-                    <img src="https://via.placeholder.com/600x400" alt="Students learning online">
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10,000+</span>
+                        <span class="stat-label">Active Students</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Expert Instructors</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1,000+</span>
+                        <span class="stat-label">Courses Available</span>
+                    </div>
                 </div>
             </div>
-        </section>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/600x400" alt="Students learning online">
+            </div>
+        </div>
+    </section>
 
-        <section id="courses">
-            <h2>Featured Courses</h2>
-            <p>Explore our most popular courses</p>
-        </section>
+    <section id="courses">
+        <h2>Explore Our Course Categories</h2>
+        <p>Discover a wide range of courses designed to help you achieve your learning goals</p>
+        <div class="course-categories">
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-code" aria-hidden="true"></i>
+                </div>
+                <h3>Programming</h3>
+                <p>Master programming languages from Python and JavaScript to Java and C++. Build real-world applications and advance your coding skills with hands-on projects.</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-palette" aria-hidden="true"></i>
+                </div>
+                <h3>Design</h3>
+                <p>Learn graphic design, UI/UX, and web design from industry professionals. Create stunning visuals and user experiences that captivate audiences.</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-briefcase" aria-hidden="true"></i>
+                </div>
+                <h3>Business</h3>
+                <p>Develop essential business skills including management, entrepreneurship, and strategy. Learn to lead teams and grow successful organizations.</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-bullhorn" aria-hidden="true"></i>
+                </div>
+                <h3>Marketing</h3>
+                <p>Master digital marketing, social media, and content strategy. Learn to create campaigns that drive engagement and deliver measurable results.</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                </div>
+                <h3>Data Science</h3>
+                <p>Explore data analysis, machine learning, and artificial intelligence. Transform raw data into actionable insights using cutting-edge tools and techniques.</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-laptop" aria-hidden="true"></i>
+                </div>
+                <h3>Digital Marketing</h3>
+                <p>Learn SEO, PPC, email marketing, and analytics. Build comprehensive digital marketing strategies that reach and convert your target audience.</p>
+            </div>
+        </div>
+    </section>
 
-        <section id="about">
-            <h2>About Us</h2>
-            <p>Learn more about our mission</p>
-        </section>
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing high-quality online education accessible to everyone, everywhere.</p>
+    </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Get in touch with us</p>
-        </section>
-    </main>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Get in touch with our team for any questions or support.</p>
+    </section>
 
     <footer>
-        <p>&copy; 2024 Online Learning Platform. All rights reserved.</p>
+        <p>&copy; 2024 LearnHub. All rights reserved.</p>
     </footer>
 </body>
 </html>
